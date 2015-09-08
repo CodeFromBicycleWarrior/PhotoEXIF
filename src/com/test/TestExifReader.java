@@ -27,7 +27,7 @@ public class TestExifReader {
 	 */
 	public static void readEXIF(){
 		try {
-			File jpegFile = new File("C://Users//DELL//Desktop//1.jpg");
+			File jpegFile = new File("C://Users//DELL//Desktop//4.jpg");
 			Metadata metadata = JpegMetadataReader.readMetadata(jpegFile);
 			Directory exif = metadata.getDirectory(ExifDirectory.class);// 这里要稍微注意下
 			Iterator tags = exif.getTagIterator();
@@ -45,7 +45,7 @@ public class TestExifReader {
 	 * http://bbs.csdn.net/topics/40177731#post-25060371
 	 */
 	private static void readExif() {
-		File f = new File("C://Users//DELL//Desktop//1.jpg");
+		File f = new File("C://Users//DELL//Desktop//4.jpg");
 		try {
 			ExifReader er = new ExifReader(f);
 			Metadata exif = er.extract();

@@ -34,7 +34,7 @@ public class TestExifWriter {
      */
     public static void modifyEXIF() throws Exception {
         //原文件
-        InputStream fip = new BufferedInputStream(new FileInputStream("C://Users//DELL//Desktop//1.jpg")); // No need to buffer
+        InputStream fip = new BufferedInputStream(new FileInputStream("C://Users//DELL//Desktop//4.jpg")); // No need to buffer
         LLJTran llj = new LLJTran(fip);
         try {
             llj.read(LLJTran.READ_INFO, true);
@@ -44,13 +44,17 @@ public class TestExifWriter {
         Exif exif = (Exif) llj.getImageInfo();      
         
         /* Set some values directly to gps IFD */
-                
+
+
+        // 经度 Longitude
+        // 纬度Latitude
+        
         Entry e;
         // Set Latitude
         e = new Entry(Exif.ASCII);        
-        e.setValue(0, 'N');
+        e.setValue(0, 'E');
         exif.setTagValue(Exif.GPSLatitudeRef,-1, e, true);
-        //设置具体的精度
+        //设置具体的经度
 		e = new Entry(Exif.RATIONAL);
 		e.setValue(0, new Rational(31, 1));
 		e.setValue(1, new Rational(21, 1));
@@ -71,7 +75,7 @@ public class TestExifWriter {
 
 		llj.refreshAppx(); // Recreate Marker Data for changes done
 		// 改写后的文件，文件必须存在
-		OutputStream out = new BufferedOutputStream(new FileOutputStream("C://Users//DELL//Desktop//2.jpg"));
+		OutputStream out = new BufferedOutputStream(new FileOutputStream("C://Users//DELL//Desktop//16.jpg"));
 		// Transfer remaining of image to output with new header.
 		llj.xferInfo(null, out, LLJTran.REPLACE, LLJTran.REPLACE);
         fip.close();
